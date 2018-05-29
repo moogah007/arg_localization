@@ -38,9 +38,6 @@ When you receive a check that pays a customer invoice, you can go to that invoic
 
 When you want to deposit checks to the bank, go to the menu *Accounting > Adviser > Check Deposit*, create a new check deposit and set the journal *Checks Received* and select the bank account on which you want to credit the checks. Then click on *Add an item* to select the checks you want to deposit at the bank. Eventually, validate the deposit and print the report (you probably want to customize this report).
 
-.. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
-   :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/92/10.0
 
 Bug Tracker
 ===========
@@ -64,14 +61,3 @@ Contributors
 Maintainer
 ----------
 
-.. image:: https://odoo-community.org/logo.png
-   :alt: Odoo Community Association
-   :target: https://odoo-community.org
-
-This module is maintained by the OCA.
-
-OCA, or the Odoo Community Association, is a nonprofit organization whose
-mission is to support the collaborative development of Odoo features and
-promote its widespread use.
-
-To contribute to this module, please visit https://odoo-community.org.
