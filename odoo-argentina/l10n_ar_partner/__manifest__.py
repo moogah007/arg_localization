@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'author': "Moldeo Interactive,ADHOC SA",
+    'author': "Moogah,Moldeo Interactive,ADHOC SA",
     'category': 'Localization/Argentina',
     'depends': [
         'partner_identification',

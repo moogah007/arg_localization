@@ -1,9 +1,6 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2015  ADHOC SA  (http://www.adhoc.com.ar)
-#    All Rights Reserved.
-#
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
 #    published by the Free Software Foundation, either version 3 of the
@@ -24,8 +21,8 @@
     'category': 'Tools',
     'sequence': 14,
     'summary': '',
-    'author': 'ADHOC SA',
-    'website': 'www.adhoc.com.ar',
+    'author': 'Moogah,ADHOC SA',
+    'website': 'www.moogah.com',
     'license': 'AGPL-3',
     'images': [
     ],

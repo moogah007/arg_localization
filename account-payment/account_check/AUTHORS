@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-# Copyright (C) 2012 OpenERP - Team de Localización Argentina.
+# Copyright (C) 2012 OpenERP - Team de Localizaciï¿½n Argentina.
 # https://launchpad.net/~openerp-l10n-ar-localization
 #
 # This program is free software: you can redistribute it and/or modify
@@ -20,15 +20,15 @@
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
 ##############################################################################
 #
-# En este archivo encontrará la lista de contribuyentes al código del
-# presente módulo de la localización argentina.
+# En este archivo encontrarï¿½ la lista de contribuyentes al cï¿½digo del
+# presente mï¿½dulo de la localizaciï¿½n argentina.
 #
-# Si usted ha contribuido debe indicar su nombre, la URL a su empresa o página
-# persona, su correo electrónico tal como se presenta a continuación.
+# Si usted ha contribuido debe indicar su nombre, la URL a su empresa o pï¿½gina
+# persona, su correo electrï¿½nico tal como se presenta a continuaciï¿½n.
 #
-# El órden de contribución será determinado en forma alfabética. Si quiere
-# saber como ha contribuido cada autor en el módulo le recomendamos ver la
-# página de launchpad
+# El ï¿½rden de contribuciï¿½n serï¿½ determinado en forma alfabï¿½tica. Si quiere
+# saber como ha contribuido cada autor en el mï¿½dulo le recomendamos ver la
+# pï¿½gina de launchpad
 #
 # http://bazaar.launchpad.net/~openerp-l10n-ar-localization/openerp-l10n-ar-localization/6.0/changes
 #
@@ -36,8 +36,8 @@
 
 Ignacio E. Parszyk (www.thymbra.com)
 Silvina Faner (openpyme.com.ar) <sfaner@gmail.com>
-Juan José Scarafía (www.ingadhoc.com) <jjscarafia@ingadhoc.com>
+Juan Josï¿½ Scarafï¿½a (www.ingadhoc.com) <jjscarafia@ingadhoc.com>
 Damian Soriano (www.ingadhoc.com) <dsoriano@ingadhoc.com>
 Javier Diez (www.ingadhoc.com) <jdiez@ingadhoc.com>
-
+Maximiliano Krause (www.moogah.com <maximiliano@moogah.com>
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

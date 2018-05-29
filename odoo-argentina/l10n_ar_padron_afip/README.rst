@@ -27,6 +27,7 @@ Credits
 Contributors
 ------------
 
+* Maximiliano Krause <maximiliano@moogah.com.>
 * Juan José Scarafía <jjs@adhoc.com.ar>
 
 Maintainer

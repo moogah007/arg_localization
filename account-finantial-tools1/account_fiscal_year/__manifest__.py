@@ -6,9 +6,10 @@
     'name': 'Account Fiscal Year',
     'version': '10.0.1.0.0',
     'category': 'Accounting',
-    'author': 'Camptocamp SA,'
+    'author': 'Moogah',
+    		  'Camptocamp SA,'
               'Odoo Community Association (OCA)',
-    'website': 'http://www.camptocamp.com',
+    'website': 'http://www.moogah.com,
     'depends': [
         'account',
         'date_range'

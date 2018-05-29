@@ -6,7 +6,7 @@ Modules that extend odoo for common needs of Argentine Customers
 This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
 [//]: # (end addons)
 
-Translation Status
+
 ------------------
 
 

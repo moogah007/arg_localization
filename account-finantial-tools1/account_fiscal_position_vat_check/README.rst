@@ -48,6 +48,7 @@ Contributors
 ------------
 
 * Alexis de Lattre <alexis.delattre@akretion.com>
+* Moogah
 
 Maintainer
 ----------

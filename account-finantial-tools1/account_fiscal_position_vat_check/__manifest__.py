@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # © 2013-2016 Akretion (Alexis de Lattre <alexis.delattre@akretion.com>)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# © 2017-2018 Moogah (http://www.moogah.com)
 
 {
     'name': 'Account Fiscal Position VAT Check',
@@ -8,7 +9,7 @@
     'category': 'Accounting & Finance',
     'license': 'AGPL-3',
     'summary': 'Check VAT on invoice validation',
-    'author': "Akretion,Odoo Community Association (OCA)",
+    'author': "Akretion,Odoo Community Association (OCA),Moogah",
     'website': 'http://www.akretion.com',
     'depends': ['account', 'base_vat'],
     'data': [

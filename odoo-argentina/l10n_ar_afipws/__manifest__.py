@@ -4,7 +4,7 @@
     'version': '10.0.1.0.0',
     'category': 'Localization/Argentina',
     'sequence': 14,
-    'author': 'ADHOC SA, Moldeo Interactive',
+    'author': 'Moogah,ADHOC SA, Moldeo Interactive',
     'license': 'AGPL-3',
     'summary': '',
     'depends': [
