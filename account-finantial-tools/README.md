@@ -1,6 +1,6 @@
 # Odoo Accountant Financial Tools and Utils
 
-Modules that extend odoo for common needs of ADHOC Customers
+Modules that extend odoo for common needs of Argentine Customers
 
 [//]: # (addons)
 This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
