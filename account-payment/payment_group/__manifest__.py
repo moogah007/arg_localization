@@ -20,9 +20,9 @@
 ##############################################################################
 {
     'name': 'Payment Acquirer Groups',
-    'version': '9.0.1.0.0',
-    'author': 'ADHOC SA',
-    'website': 'www.adhoc.com.ar',
+    'version': '10.0.1.1.0',
+    'author': 'Moogah,ADHOC SA',
+    'website': 'www.moogah.com',
     'license': 'AGPL-3',
     'category': 'Accounting & Finance',
     'depends': [

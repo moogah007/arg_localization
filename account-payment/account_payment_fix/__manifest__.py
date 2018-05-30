@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
-    'author': 'ADHOC SA',
-    'website': 'www.adhoc.com.ar',
+    'author': 'Moogah,ADHOC SA',
+    'website': 'www.moogah.com',
     'license': 'AGPL-3',
     'category': 'Accounting & Finance',
     'data': [
@@ -14,5 +14,5 @@
     'installable': True,
     'name': 'Account Payment Fix',
     'test': [],
-    'version': '9.0.1.0.0',
+    'version': '10.0.1.1.0',
 }

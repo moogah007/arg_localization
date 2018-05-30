@@ -54,7 +54,7 @@ Credits
 Images
 ------
 
-* ADHOC SA: `Icon <http://fotos.subefotos.com/83fed853c1e15a8023b86b2b22d6145bo.png>`_.
+* Moogah: `Icon <http://www.moogah.com/logo.png>`_.
 
 Contributors
 ------------
@@ -63,10 +63,9 @@ Contributors
 Maintainer
 ----------
 
-.. image:: http://fotos.subefotos.com/83fed853c1e15a8023b86b2b22d6145bo.png
+.. image:: http://www.moogah.com/logo.png
    :alt: Odoo Community Association
-   :target: https://www.adhoc.com.ar
+   :target: https://www.moogah.com
 
-This module is maintained by the ADHOC SA.
+This module is maintained by the Moogah.
 
-To contribute to this module, please visit https://www.adhoc.com.ar.
