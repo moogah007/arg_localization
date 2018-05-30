@@ -97,7 +97,8 @@ result = withholdable_base_amount * 0.10
     tax_control = fields.Selection(
         [('control','Control p/Jurisdiccion en Provincia de Facturas'),('no_control','Sin Aplicar Control')],
         default="no_control",
-        translate=True
+        translate=True,
+        string="Jurisdiction Control",
     )
 
     @api.one

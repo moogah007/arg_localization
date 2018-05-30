@@ -13,7 +13,7 @@ class AccountInvoice(models.Model):
     state_id = fields.Many2one(
         'res.country.state',
         string="State",
-        states={'paid': [('readonly', True)]}
+        states={'paid': [('readonly', True)]},
     )
 
     @api.onchange('partner_id')
@@ -42,7 +42,7 @@ class AccountInvoice(models.Model):
                     po = rec.env['purchase.order'].search([('name', '=', rec.origin)])
                     if po:
                         vals['state_id'] = po.state_id.id
-                    if vals['state_id'] == False:
+                    if not 'state_id' in vals.keys():
                         vals['state_id'] = rec.partner_id.state_id.id
                 else:
                     vals['state_id'] = rec.partner_id.state_id.id

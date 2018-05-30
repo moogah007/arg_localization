@@ -58,24 +58,14 @@ class AccountPayment(models.Model):
 
     @api.onchange('tax_withholding_id')
     def _onchange_tax_withholding_id2(self):
-        self.withholding_number = self.env['ir.sequence'].next_by_code(self.tax_withholding_id.sequence_id.code)
+        if self.tax_withholding_id:
+            if self.tax_withholding_id.sequence_id.code:
+                self.withholding_number = self.env['ir.sequence'].next_by_code(self.tax_withholding_id.sequence_id.code)
 
-    @api.one
-    def post(self):
-        res = super(AccountPayment, self).post()
-        for payment in self:
-            if payment.payment_method_code == 'withholding':
-                if not self.withholding_number:
-                    sequence = payment.tax_withholding_id.sequence_id
-                    if sequence:
-                        self.withholding_number = self.env['ir.sequence'].next_by_code(payment.tax_withholding_id.sequence_id.code)
-                        #next_number = sequence.number_next_actual
-                        #self.withholding_number = sequence.get_next_char(next_number)
-                        #payment.tax_withholding_id.sequence_id.write({'number_next_actual': sequence.number_next_actual + sequence.number_increment})
-                    else:
-                        if self.withholding_number:
-                            s = self.withholding_number
-                            s = s.split(' ', 1)
-                            if len(s) == 2:
-                                self.withholding_number = "{:0>4}".format(s[0]) + '-' + "{:0>8}".format(s[1])
-        return res
+    @api.onchange('withholding_number')
+    def _onchange_withholding_number(self):
+        if self.withholding_number:
+            s = self.withholding_number
+            s = s.split(' ', 1)
+            if len(s) == 2:
+                self.withholding_number = "{:0>4}".format(s[0]) + '-' + "{:0>8}".format(s[1])

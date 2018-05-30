@@ -17,6 +17,12 @@
                         </group>
                     </group>
                 </xpath>
+                <field name="refund_account_id" position="after">
+                    <field name="tax_control"
+                           attrs="{'invisible': [('type_tax_use', 'not in', ['sale','supplier']),
+                                ('amount_type','not in', ['percent','code2'])]}"
+                    />
+                </field>
                     <notebook>
                         <page string="TAX Calculations">
                             <p>
@@ -47,7 +53,6 @@
                                 <field name="withholding_non_taxable_amount"/>
                                 <field name="withholding_user_error_message" invisible="1"/>
                                 <field name="withholding_user_error_domain" attrs="{'invisible': [('withholding_user_error_message', '=', False)]}"/>
-                                <field name="tax_control"/>
                                 <!--<button name="account_withholding_automatic.action_withholding_automatic_domain2_wizard" type="action" string="Insertar Regla" attrs="{'invisible': [('withholding_type', '!=', 'based_on_rule')]}"/>--> <!-- states="draft" -->
                             </group>
                         </page>

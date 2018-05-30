@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
-from openerp import fields, models, api
-# from openerp.exceptions import ValidationError
+from odoo import fields, models, api, _
+from odoo.exceptions import ValidationError
 import logging
 _logger = logging.getLogger(__name__)
-
 
 class AccountPayment(models.Model):
     _inherit = 'account.payment'
@@ -28,23 +27,6 @@ class AccountPayment(models.Model):
     outbound = fields.Boolean() #domain
     readonly_amount2 = fields.Monetary(string='Monto a Pagar',readonly=True,translate=True)
 
-    @api.onchange('payment_method_id','journal_id')
-    def _onchange_payment_method_id2(self):
-        self.hide_payment_method = True
-        # domain = {}
-        # partner_list = []
-        # if self.journal_id:
-        #     if self.payment_type == 'inbound':
-        #         partner_obj = self.journal_id.inbound_payment_method_ids
-        #     else:
-        #         partner_obj = self.journal_id.outbound_payment_method_ids
-        #     for partner_ids in partner_obj:
-        #         partner_list.append(partner_ids.id)
-        #         # to assign parter_list value in domain
-        #     domain = {'payment_method_id': [('id', '=', partner_list)]}
-        #
-        # return {'domain': domain}
-
     @api.onchange('journal_id')
     def _onchange_journal_id2(self):
         if self.journal_id.id:
@@ -58,11 +40,9 @@ class AccountPayment(models.Model):
             ]
             return {'domain': {'destination_journal_id': domain}}
 
+
     @api.multi
-    @api.depends(
-        # 'payment_type',
-        'journal_id',
-    )
+    @api.depends('journal_id')
     def _compute_destination_journals(self):
         for rec in self:
             domain = [
@@ -71,18 +51,6 @@ class AccountPayment(models.Model):
                 ('company_id', '=', rec.journal_id.company_id.id),
             ]
             rec.destination_journal_ids = rec.journal_ids.search(domain)
-
-    # @api.multi
-    # @api.depends(
-    #     'payment_type',
-    # )
-    # def _compute_journal_at_least_type(self):
-    #     for rec in self:
-    #         if rec.payment_type == 'inbound':
-    #             journal_at_least_type = 'at_least_one_inbound'
-    #         else:
-    #             journal_at_least_type = 'at_least_one_outbound'
-    #         rec.journal_at_least_type = journal_at_least_type
 
     @api.multi
     def get_journals_domain(self):
@@ -98,9 +66,7 @@ class AccountPayment(models.Model):
         return domain
 
     @api.multi
-    @api.depends(
-        'payment_type',
-    )
+    @api.depends('payment_type')
     def _compute_journals(self):
         for rec in self:
             rec.journal_ids = rec.journal_ids.search(rec.get_journals_domain())
@@ -131,15 +97,6 @@ class AccountPayment(models.Model):
                 self.partner_type = 'customer'
             elif self.payment_type == 'outbound':
                 self.partner_type = 'supplier'
-        # # Set payment method domain
-        # res = self._onchange_journal()
-        # if not res.get('domain', {}):
-        #     res['domain'] = {}
-        # res['domain']['journal_id'] = self.payment_type == 'inbound' and [
-        #     ('at_least_one_inbound', '=', True)] or [
-        #     ('at_least_one_outbound', '=', True)]
-        # res['domain']['journal_id'].append(('type', 'in', ('bank', 'cash')))
-        # return res
 
     # @api.onchange('partner_type')
     def _onchange_partner_type(self):
@@ -149,6 +106,7 @@ class AccountPayment(models.Model):
         """
         return True
 
+    @api.depends('journal_id.outbound_payment_method_ids','journal_id.inbound_payment_method_ids')
     @api.onchange('journal_id')
     def _onchange_journal(self):
         """
@@ -166,17 +124,19 @@ class AccountPayment(models.Model):
                 self.journal_id.outbound_payment_method_ids)
             self.payment_method_id = (
                 payment_methods and payment_methods[0] or False)
-        #     # Set payment method domain
-        #     # (restrict to methods enabled for the journal and to selected
-        #     # payment type)
-        #     payment_type = self.payment_type in (
-        #         'outbound', 'transfer') and 'outbound' or 'inbound'
-        #     return {
-        #         'domain': {
-        #             'payment_method_id': [
-        #                 ('payment_type', '=', payment_type),
-        #                 ('id', 'in', payment_methods.ids)]}}
-        # return {}
+
+    @api.constrains('vendobill','customerbill','payment_type','payment_method_code')
+    def constrains_vendor_customer_bill(self):
+        if self.payment_method_code == 'withholding':
+            if self.payment_type == 'inbound' and self.vendorbill:
+                raise ValidationError(_('en la linea del pago afectada a retencion no puede tener una factura de proveedor'))
+            if self.payment_type == 'inbound' and not self.customerbill:
+                raise ValidationError(_('en la linea del pago afectada a retencion debe tener una factura de cliente'))
+            if self.payment_type == 'outbound' and not self.vendorbill:
+                raise ValidationError(_('en la linea del recibo afectada a retencion debe tener una factura de proveedor'))
+            if self.payment_type == 'outbound' and self.customerbill:
+                raise ValidationError(_('en la linea del recibo afectada a retencion no puede tener una factura de cliente'))
+
 
     @api.one
     @api.depends('invoice_ids', 'payment_type', 'partner_type', 'partner_id')
@@ -201,11 +161,6 @@ class AccountPayment(models.Model):
     @api.model
     def default_get(self, fields):
         res = super(AccountPayment, self).default_get(fields)
-        if 'payment_type' in res:
-            if res['payment_type'] == 'inbound':
-                res.update({'inbound':True})
-            else:
-                res.update({'outbound':True})
         res.update({'hide_payment_method':True})
         if 'amount' in res:
             res.update({'readonly_amount2':res['amount']})
