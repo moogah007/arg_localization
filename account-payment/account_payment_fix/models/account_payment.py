@@ -27,6 +27,10 @@ class AccountPayment(models.Model):
     outbound = fields.Boolean() #domain
     readonly_amount2 = fields.Monetary(string='Monto a Pagar',readonly=True,translate=True)
 
+    @api.onchange('payment_method_id','journal_id')
+    def _onchange_payment_method_id2(self):
+        self.hide_payment_method = True
+
     @api.onchange('journal_id')
     def _onchange_journal_id2(self):
         if self.journal_id.id:
@@ -106,7 +110,6 @@ class AccountPayment(models.Model):
         """
         return True
 
-    @api.depends('journal_id.outbound_payment_method_ids','journal_id.inbound_payment_method_ids')
     @api.onchange('journal_id')
     def _onchange_journal(self):
         """
@@ -161,6 +164,11 @@ class AccountPayment(models.Model):
     @api.model
     def default_get(self, fields):
         res = super(AccountPayment, self).default_get(fields)
+        if 'payment_type' in res:
+            if res['payment_type'] == 'inbound':
+                res.update({'inbound':True})
+            else:
+                res.update({'outbound':True})
         res.update({'hide_payment_method':True})
         if 'amount' in res:
             res.update({'readonly_amount2':res['amount']})
