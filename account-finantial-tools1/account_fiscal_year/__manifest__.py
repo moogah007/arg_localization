@@ -8,7 +8,7 @@
     'category': 'Accounting',
     'author': 'Moogah',
     		  'Camptocamp SA',
-              'Odoo Community Association (OCA)',
+              'Odoo Community Association OCA',
     'website': 'http://www.moogah.com',
     'depends': [
         'account',
