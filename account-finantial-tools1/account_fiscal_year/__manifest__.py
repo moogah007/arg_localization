@@ -16,7 +16,7 @@
     ],
     'data': [
         'data/date_range_type.xml',
-        'views/date_range_type.xml',
+        'views/date_range_type.xml'
     ],
     'installable': True,
     'application': True,
