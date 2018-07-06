@@ -15,5 +15,5 @@
     'website': 'http://acsone.eu/',
     'depends': ['account_type_menu'],
     'data': ['views/account.xml'],
-    'installable': True,
+    'installable': False,
 }
