@@ -9,7 +9,7 @@
     'author': 'Moogah',
     		  'Camptocamp SA,'
               'Odoo Community Association (OCA)',
-    'website': 'http://www.moogah.com,
+    'website': 'http://www.moogah.com',
     'depends': [
         'account',
         'date_range'
