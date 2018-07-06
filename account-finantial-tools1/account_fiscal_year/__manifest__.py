@@ -7,7 +7,7 @@
     'version': '10.0.1.0.0',
     'category': 'Accounting',
     'author': 'Moogah',
-    		  'Camptocamp SA,'
+    		  'Camptocamp SA',
               'Odoo Community Association (OCA)',
     'website': 'http://www.moogah.com',
     'depends': [
