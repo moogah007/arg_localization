@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_account_journal_form3">
+        <field name="name">view.account.journal.form3</field>
+        <field name="model">account.journal</field>
+        <field name="inherit_id" ref="account.view_account_journal_form"/>
+        <field name="arch" type="xml">
+             <field name="type" position="after">
+                <field name="partner_id" attrs="{'invisible':[('type', '!=', 'sale')]}"/>
+            </field>
+        </field>
+    </record>
+
+    <template id="minetech_order"
+              inherit_id="vitt_arg_einvoice_format.report_invoice_document_inherit_vitt_afip_invoice_format_invoice"
+              name="minetech print order">
+        <xpath expr="//div[@class='page']/div[2]/div[7]" position="replace">
+            <t t-if="not o.journal_id.partner_id">
+                <div class="col-xs-6">
+                    <strong style="display:inline-block;line-height:20px;">Dirección:</strong>
+                    <span t-field="o.company_id.street"/>-
+                    <span t-field="o.company_id.street2"/>-
+                    <span t-field="o.company_id.zip"/>-
+                    <span t-field="o.company_id.city"/>-
+                    <span t-field="o.company_id.state_id"/>
+                </div>
+            </t>
+            <t t-if="o.journal_id.partner_id">
+                <div class="col-xs-6">
+                    <strong style="display:inline-block;line-height:20px;">Dirección:</strong>
+                    <span t-field="o.journal_id.partner_id.street"/>-
+                    <span t-field="o.journal_id.partner_id.street2"/>-
+                    <span t-field="o.journal_id.partner_id.zip"/>-
+                    <span t-field="o.journal_id.partner_id.city"/>-
+                    <span t-field="o.journal_id.partner_id.state_id"/>
+                </div>
+            </t>
+        </xpath>
+    </template>
+</odoo>

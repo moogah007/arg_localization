@@ -1,0 +1,38 @@
+    <openerp>
+    <data noupdate="1">
+
+        <record id="seq_tax_exceptions" model="ir.sequence">
+            <field name="name">Tax Exceptions</field>
+            <field name="code">seq.tax.exceptions</field>
+            <field name="prefix">TE/</field>
+            <field name="padding">4</field>
+        </record>
+
+        <record id="arba_prod" model="ar.tax.servers">
+            <field name="ws_type">ws_arba</field>
+            <field name="url_server">https://dfe.arba.gov.ar/DomicilioElectronico/SeguridadCliente/dfeServicioConsulta.do</field>
+            <field name="type">primary</field>
+            <field name="enviroment">prod</field>
+        </record>
+        <record id="arba_dev" model="ar.tax.servers">
+            <field name="ws_type">ws_arba</field>
+            <field name="url_server">https://dfe.test.arba.gov.ar/DomicilioElectronico/SeguridadCliente/dfeServicioConsulta.do</field>
+            <field name="type">inactive</field>
+            <field name="enviroment">dev</field>
+        </record>
+        <record id="arba_nuestro" model="ar.tax.servers">
+            <field name="ws_type">ws_arba</field>
+            <field name="url_server">http://padrones.moogah.com</field>
+            <field name="type">secondary</field>
+            <field name="database">padrones</field>
+            <field name="enviroment">prod</field>
+        </record>
+        <record id="agip_nuestro" model="ar.tax.servers">
+            <field name="ws_type">ws_agip</field>
+            <field name="url_server">http://padrones.moogah.com</field>
+            <field name="type">primary</field>
+            <field name="database">padrones</field>
+            <field name="enviroment">prod</field>
+        </record>
+    </data>
+</openerp>

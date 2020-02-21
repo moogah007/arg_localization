@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_account_tax_exceptions,access_account_tax_exceptions,model_account_tax_exceptions,base.group_user,1,0,0,0
+access_ar_tax_servers,access_ar_tax_servers,model_ar_tax_servers,base.group_user,1,0,0,0

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="excel_digital_vat_form" model="ir.ui.view">
+        <field name="name">excel.digital.vat.form</field>
+        <field name="model">excel.digital.vat</field>
+        <field name="arch" type="xml">
+            <form string="Excel Report files">
+                <group>
+                    <field name="file_p_cbte"
+                           readonly="1"
+                           filename="file_name_p_cbte"
+                           attrs="{'invisible':[('file_p_cbte','=',False)]}"
+                    />
+                    <field name="file_name_p_cbte" invisible="1"/>
+
+                    <field name="file_v_cbte"
+                           readonly="1"
+                           filename="file_name_v_cbte"
+                           attrs="{'invisible':[('file_v_cbte','=',False)]}"
+                    />
+                    <field name="file_name_v_cbte" invisible="1"/>
+
+                    <field name="file_p_alic"
+                           readonly="1"
+                           filename="file_name_p_alic"
+                           attrs="{'invisible':[('file_p_alic','=',False)]}"
+                    />
+                    <field name="file_name_p_alic" invisible="1"/>
+
+                    <field name="file_v_alic"
+                           readonly="1"
+                           filename="file_name_v_alic"
+                           attrs="{'invisible':[('file_v_alic','=',False)]}"
+                    />
+                    <field name="file_name_v_alic" invisible="1"/>
+
+                    <field name="file_p_imp"
+                           readonly="1"
+                           filename="file_name_p_imp"
+                           attrs="{'invisible':[('file_p_imp','=',False)]}"
+                    />
+                    <field name="file_name_p_imp" invisible="1"/>
+
+                    <field name="file_s_imp"
+                           readonly="1"
+                           filename="file_name_s_imp"
+                           attrs="{'invisible':[('file_s_imp','=',False)]}"
+                    />
+                    <field name="file_name_s_imp" invisible="1"/>
+
+                    <field name="file_tv_cbte"
+                           readonly="1"
+                           filename="file_name_tv_cbte"
+                           attrs="{'invisible':[('file_tv_cbte','=',False)]}"
+                    />
+                    <field name="file_name_tv_cbte" invisible="1"/>
+
+                    <field name="file_tc_cbte"
+                           readonly="1"
+                           filename="file_name_tc_cbte"
+                           attrs="{'invisible':[('file_tc_cbte','=',False)]}"
+                    />
+                    <field name="file_name_tc_cbte" invisible="1"/>
+
+                    <field name="file_null_cbte"
+                           readonly="1"
+                           filename="file_name_null_cbte"
+                           attrs="{'invisible':[('file_null_cbte','=',False)]}"
+                    />
+                    <field name="file_name_null_cbte" invisible="1"/>
+
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_excel_form" model="ir.actions.act_window">
+        <field name="name">Exportacion IVA Digital</field>
+        <field name="view_id" ref="excel_digital_vat_form"/>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="res_model">excel.digital.vat</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="digital_vat_form" model="ir.ui.view">
+        <field name="model">wizard.digital.vat</field>
+        <field name="name">digital.vat.form</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="LIBRO_IVA_DIGITAL_COMPRAS_CBTE"/>
+                    <field name="LIBRO_IVA_DIGITAL_COMPRAS_ALICUOTAS"/>
+                    <field name="LIBRO_IVA_DIGITAL_VENTAS_CBTE"/>
+                    <field name="LIBRO_IVA_DIGITAL_VENTAS_ALICUOTAS"/>
+                    <field name="LIBRO_IVA_DIGITAL_IMPORTACION_BIENES_ALICUOTA"/>
+                    <field name="LIBRO_IVA_DIGITAL_IMPORTACION_SERVICIOS_CREDITO_FISCAL"/>
+                    <field name="LIBRO_IVA_DIGITAL_VENTAS_TurIVA_CBTE"/>
+                    <field name="LIBRO_IVA_DIGITAL_COMPRAS_TurIVA_CBTE"/>
+                    <field name="LIBRO_IVA_DIGITAL_VENTAS_ANULADAS"/>
+                </group>
+                <footer>
+                    <button name="print_digital_vat" string="Exportar IVA DIGITAL" type="object"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="digital_vat_action" model="ir.actions.act_window">
+        <field name="name">IVA Digital</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wizard.digital.vat</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem name="IVA Digital"
+        id="digital_vat_menu"
+        parent="vitt_sales_reports.menu_tax_exports"
+        action="digital_vat_action"
+        sequence="9"
+    />
+
+</odoo>
